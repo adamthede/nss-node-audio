@@ -7,9 +7,9 @@ html(class='no-js', lang='en')
     title= title
     link(rel='stylesheet', href='/css/normalize.css')
     link(rel='stylesheet', href='/css/foundation.css')
-    link(rel='stylesheet', href='/less/app.css')
+    link(rel='stylesheet', href='/less/show.css')
     script(src='/js/vendor/modernizr.js')
-  body(style='background-image:url("'+album.cover+'")')
+  body
     .row
       .small-12.columns
         h1= title + ' : ' + moment(album.releaseyear).format('MMMM Do, YYYY')
@@ -20,23 +20,24 @@ html(class='no-js', lang='en')
       .small-4.columns
         form(action='/albums/' + album._id, method='post', enctype='multipart/form-data')
           fieldset
-            legend Add Song
             label Song
             input(type='file', name='song')
             label &nbsp;
             button.tiny.radius Add Song
       .small-8.columns
+        .songs(style='background-image:url("' + album.cover + '")')
+          .playlist
+            each song in album.songs
+              .row
+                .small-4.columns
+                  .title= song.title
+                .small-8.columns
+                  audio(controls='controls', src= song.songfile)
+                    code audio
     .row
       .small-12.columns
-        .photo(style='background-image:url("' + album.cover + '")')
-    .row
-      .small-6.columns
         each song in album.songs
-          .songs
-            .title= song.title
-            .artist= song.artist
-            audio(controls='controls', src= song.songfile)
-              code audio
+          .test1= song.songtags
 
     script(src='/js/vendor/jquery.js')
     script(src='/js/vendor/foundation.js')

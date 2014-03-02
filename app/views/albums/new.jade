@@ -7,7 +7,7 @@ html(class='no-js', lang='en')
     title= title
     link(rel='stylesheet', href='/css/normalize.css')
     link(rel='stylesheet', href='/css/foundation.css')
-    link(rel='stylesheet', href='/less/app.css')
+    link(rel='stylesheet', href='/less/new.css')
     script(src='/js/vendor/modernizr.js')
   body
     .row
@@ -16,11 +16,10 @@ html(class='no-js', lang='en')
     .row
       .small-12.columns
         a.button.tiny.radius(href='/') Home Page
-    .row
+    .row#formstuff
       .small-4.columns
         form(action='/albums', method='post', enctype='multipart/form-data')
           fieldset
-            legend= title
             label Title
             input(type='text', name='title')
             label Artist

@@ -44,7 +44,7 @@ Album.prototype.parseTags = function(oldpath, fileName, fn){
   fs.renameSync(oldpath, abspath + relpath);
 
   id3({file:abspath + relpath, type:id3.OPEN_LOCAL}, function(err, tags){
-    fn({songfile:relpath, title:tags.title, artist:tags.artist});
+    fn({songfile:relpath, songtags:tags, title:tags.title, artist:tags.artist});
   });
 };
 
