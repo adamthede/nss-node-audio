@@ -1,0 +1,46 @@
+doctype html
+//[if IE 9]><html class="lt-ie10" lang="en" > <![endif]
+html(class='no-js', lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title= title
+    link(rel='stylesheet', href='/css/normalize.css')
+    link(rel='stylesheet', href='/css/foundation.css')
+    link(rel='stylesheet', href='/less/app.css')
+    script(src='/js/vendor/modernizr.js')
+  body(style='background-image:url("'+album.cover+'")')
+    .row
+      .small-12.columns
+        h1= title + ' : ' + moment(album.releaseyear).format('MMMM Do, YYYY')
+    .row
+      .small-12.columns
+        a.button.tiny.radius(href='/') Home Page
+    .row
+      .small-4.columns
+        form(action='/albums/' + album._id, method='post', enctype='multipart/form-data')
+          fieldset
+            legend Add Song
+            label Song
+            input(type='file', name='song')
+            label &nbsp;
+            button.tiny.radius Add Song
+      .small-8.columns
+    .row
+      .small-12.columns
+        .photo(style='background-image:url("' + album.cover + '")')
+    .row
+      .small-6.columns
+        each song in album.songs
+          .songs
+            .title= song.title
+            .artist= song.artist
+            audio(controls='controls', src= song.songfile)
+              code audio
+
+    script(src='/js/vendor/jquery.js')
+    script(src='/js/vendor/foundation.js')
+    script(src='/js/vendor/lodash.js')
+    script(src='/js/vendor/moment.js')
+    script(src='/js/source/main.js')
+
