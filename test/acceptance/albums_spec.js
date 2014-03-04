@@ -139,7 +139,7 @@ describe('albums', function(){
     it('should delete a specific album from the database', function(done){
       request(app)
       .del('/albums/' + a1._id.toString())
-      .expect(302, done);
+      .expect(200, done);
     });
   });
 });
