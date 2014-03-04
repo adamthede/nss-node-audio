@@ -118,4 +118,28 @@ describe('albums', function(){
       .expect(302, done);
     });
   });
+  
+  describe('DEL /albums/3', function(){
+    var a1, a2, a3;
+
+    beforeEach(function(done){
+      a1 = new Album({title:'Test A', artist:'Test Aimee', releaseyear:'2012-03-25'});
+      a2 = new Album({title:'Test B', artist:'Test Sam', releaseyear:'2012-03-26'});
+      a3 = new Album({title:'Test C', artist:'Test Drew', releaseyear:'2012-03-27'});
+
+      a1.insert(function(){
+        a2.insert(function(){
+          a3.insert(function(){
+            done();
+          });
+        });
+      });
+    });
+
+    it('should delete a specific album from the database', function(done){
+      request(app)
+      .del('/albums/' + a1._id.toString())
+      .expect(302, done);
+    });
+  });
 });

@@ -30,7 +30,6 @@ Album.prototype.addCover = function(oldpath){
 };
 
 Album.prototype.addSong = function(tagObj){
-  console.log(tagObj);
   this.songs.push(tagObj);
 };
 
@@ -74,3 +73,9 @@ Album.findById = function(id, fn){
   });
 };
 
+Album.deleteById = function(id, fn){
+  var _id = Mongo.ObjectID(id);
+  albums.remove({_id:_id}, function(err, count){
+    fn(count);
+  });
+};

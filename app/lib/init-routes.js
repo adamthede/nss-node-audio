@@ -20,6 +20,7 @@ function load(app, fn){
   app.get('/albums/:id', d, albums.show);
   app.post('/albums', d, albums.create);
   app.post('/albums/:id', d, albums.songAdd);
+  app.del('/albums/:id', d, albums.deleteById);
   console.log('Routes Loaded');
   fn();
 }

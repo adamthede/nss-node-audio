@@ -37,3 +37,9 @@ exports.songAdd = function(req, res){
     });
   });
 };
+
+exports.deleteById = function(req, res){
+  Album.deleteById(req.params.id, function(count){
+    res.send({count:count});
+  });
+};

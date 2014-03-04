@@ -12,7 +12,7 @@ html(class='no-js', lang='en')
   body
     .row
       .small-12.columns
-        h1= title + ' : ' + moment(album.releaseyear).format('MMMM Do, YYYY')
+        h1= album.artist + ' : ' + title + ' : ' + moment(album.releaseyear).format('MMMM Do, YYYY')
     .row
       .small-12.columns
         a.button.tiny.radius(href='/') Home Page

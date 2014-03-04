@@ -115,7 +115,7 @@ describe('Album', function(){
     });
   });
 
-  describe('Find Methods', function(){
+  describe('Find Methods and Delete Method', function(){
     var a1, a2, a3;
 
     beforeEach(function(done){
@@ -147,6 +147,15 @@ describe('Album', function(){
         Album.findById(a1._id.toString(), function(album){
           expect(album._id).to.deep.equal(a1._id);
           expect(album).to.respondTo('addCover');
+          done();
+        });
+      });
+    });
+
+    describe('.deleteById', function(){
+      it('should find the album by id and then delete it from the database', function(done){
+        Album.deleteById(a1._id.toString(), function(count){
+          expect(count).to.equal(1);
           done();
         });
       });
